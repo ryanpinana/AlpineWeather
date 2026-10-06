@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Meteo</title>
+</head>
+
+<body>
+
+    <h1>
+        Meteo di {{ weather.city }}
+    </h1>
+
+    <h2>
+        {{ weather.weather_description }}
+    </h2>
+
+    <p>
+        Paese: {{ weather.country }}
+    </p>
+
+    <hr>
+
+    <p>
+        Temperatura:
+        {{ weather.temperature }} °C
+    </p>
+
+    <p>
+        Temperatura percepita:
+        {{ weather.apparent_temperature }} °C
+    </p>
+
+    <p>
+        Umidità:
+        {{ weather.humidity }} %
+    </p>
+
+    <p>
+        Vento:
+        {{ weather.wind_speed }} km/h
+    </p>
+
+    <p>
+        Fonte dati:
+        {{ weather.source }}
+    </p>
+
+    <hr>
+
+    <a href="{{ url_for('weather.search') }}">
+        Cerca un'altra città
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('auth.logout') }}">
+        Logout
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('favourites.add_favourite', city=weather.city) }}">
+    Aggiungi ai preferiti
+    </a>
+
+</body>
+
+</html>

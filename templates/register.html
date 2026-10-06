@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrazione</title>
+</head>
+<body>
+
+    <h1>Registrazione</h1>
+
+    <form method="POST">
+
+        <label>Username</label>
+        <input
+            type="text"
+            name="username"
+            required
+        >
+
+        <br><br>
+
+        <label>Email</label>
+        <input
+            type="email"
+            name="email"
+            required
+        >
+
+        <br><br>
+
+        <label>Password</label>
+        <input
+            type="password"
+            name="password"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Registrati
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/auth/login">
+        Hai già un account?
+    </a>
+
+</body>
+</html>

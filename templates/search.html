@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Ricerca meteo</title>
+</head>
+
+<body>
+
+    <h1>Ricerca meteo</h1>
+
+    <p>
+        Benvenuto, {{ current_user.username }}!
+    </p>
+
+    <form action="{{ url_for('weather.weather') }}" method="GET">
+
+        <label for="city">
+            Inserisci una città:
+        </label>
+
+        <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Es. Milano"
+            required
+        >
+
+        <button type="submit">
+            Cerca
+        </button>
+
+    </form>
+
+    {% if error %}
+
+        <p>
+            {{ error }}
+        </p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="{{ url_for('auth.logout') }}">
+        Logout
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('favourites.favourites') }}">
+        Le mie città preferite
+    </a> 
+
+</body>
+
+</html>

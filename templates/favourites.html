@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Preferiti</title>
+</head>
+
+<body>
+
+    <h1>Le mie cità preferite</h1>
+
+    {% if cities %}
+
+        <ul>
+
+            {% for city in cities %}
+
+                <li>
+                    {{ city.city_name }}
+
+
+                    <a href="{{ url_for('weather.weather', city=city.city_name) }}">
+                        Cerca
+                    </a>
+
+                    <a href="{{ url_for('favourites.delete_favourite', id=city.id) }}">
+                        Elimina
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+        
+        <p>Nessuna città trovata</p>
+    {% endif %}
+
+    <a href="{{ url_for('weather.search') }}">
+        Torna alla ricerca
+    </a>
+
+</body>
+
+</html>
