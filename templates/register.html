@@ -2,52 +2,59 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Registrazione</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione - App Meteo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light d-flex align-items-center justify-content-center min-vh-100">
 
-    <h1>Registrazione</h1>
+    <div class="card shadow-sm border-0 my-4" style="max-width: 420px; width: 100%;">
+        <div class="card-body p-4 text-center">
+            <div class="mb-3 text-primary">
+                <i class="fa-solid fa-user-plus fa-3x"></i>
+            </div>
+            <h3 class="card-title fw-bold mb-3">Registrazione</h3>
 
-    <form method="POST">
+            <form method="POST" class="text-start">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Scegli username" required>
+                    </div>
+                </div>
 
-        <label>Username</label>
-        <input
-            type="text"
-            name="username"
-            required
-        >
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="nome@esempio.com" required>
+                    </div>
+                </div>
 
-        <br><br>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Scegli password" required>
+                    </div>
+                </div>
 
-        <label>Email</label>
-        <input
-            type="email"
-            name="email"
-            required
-        >
+                <button type="submit" class="btn btn-success w-100 mt-2">
+                    <i class="fa-solid fa-user-check me-1"></i> Registrati
+                </button>
+            </form>
 
-        <br><br>
+            <div class="mt-4 text-muted border-top pt-3">
+                Hai già un account? <a href="/auth/login" class="text-decoration-none">Accedi</a>
+            </div>
+        </div>
+    </div>
 
-        <label>Password</label>
-        <input
-            type="password"
-            name="password"
-            required
-        >
-
-        <br><br>
-
-        <button type="submit">
-            Registrati
-        </button>
-
-    </form>
-
-    <br>
-
-    <a href="/auth/login">
-        Hai già un account?
-    </a>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

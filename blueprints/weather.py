@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 from flask_login import login_required
-from services.weather_service import get_weather
+from services.weather_service import get_weather, search_cities, get_weather_by_coordinates
 
 weather_bp = Blueprint(
     "weather",
@@ -15,23 +15,45 @@ def search():
 @weather_bp.route("/weather")
 @login_required
 def weather():
+
     city = request.args.get("city")
 
-    if not city:
-        return render_template(
-            "search.html",
-            error="Inserisci una città"
+    latitude = request.args.get("latitude")
+    longitude = request.args.get("longitude")
+
+    if latitude and longitude:
+
+        weather_data = get_weather_by_coordinates(
+            latitude,
+            longitude,
+            city_name=city
         )
 
-    weather_data = get_weather(city)
+    else:
+
+        weather_data = get_weather(city)
 
     if weather_data is None:
+
         return render_template(
             "search.html",
-            error="Città non trovata"
+            error="Città non trovata."
         )
 
     return render_template(
         "weather.html",
         weather=weather_data
     )
+
+@weather_bp.route("/autocomplete")
+@login_required
+def autocomplete():
+
+    query = request.args.get("q", "")
+
+    if len(query) < 2:
+        return jsonify([])
+
+    cities = search_cities(query)
+
+    return jsonify(cities)

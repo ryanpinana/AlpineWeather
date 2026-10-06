@@ -68,7 +68,7 @@ def login():
 
             login_user(user)
 
-            return redirect(url_for("weather.weather"))
+            return redirect(url_for("weather.search"))
 
         return render_template("login.html", hasError=True)
 

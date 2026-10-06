@@ -1,25 +1,32 @@
+import os
+
 from flask import Flask
 
 from flask_login import LoginManager
 
 from models.conn import db
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 login_manager = LoginManager()
 
 
-def create_app():
+def create_app(test_config=None):
 
     app = Flask(__name__)
 
     # Configurazione
-    app.config["SECRET_KEY"] = "super-secret-key"
+    app.config["SECRET_KEY"] = os.getenv('SECRET_KEY')
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
-        "sqlite:///sqlalchemy_app.db"
-    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    if test_config:
+        app.config.update(test_config)
 
     # Inizializzazione database
     db.init_app(app)
